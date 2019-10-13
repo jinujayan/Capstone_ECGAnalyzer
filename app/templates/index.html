@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<!-- 
+    	Boxer Template
+    	http://www.templatemo.com/tm-446-boxer
+    	-->
+		<meta charset="utf-8">
+		<title>DeepInsights - ECG Analyzer Home</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		<!-- animate css -->
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/animate.min.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap.min.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/font-awesome.min.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/templatemo-style.css') }}">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<!-- google font -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800' rel='stylesheet' type='text/css'>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+  $("input[name$='test-data']").click(function(){
+  var radio_value = $(this).val();
+  document.write(radio_value)
+  if(radio_value=="ECG-TESTER") {
+	document.getElementById('ifdemo').style.display = 'none';
+	document.getElementById('ifdata').style.display = 'block';
+    
+  }
+  else if(radio_value=="DEMO") {
+    document.getElementById('ifdemo').style.display = 'block';
+	document.getElementById('ifdata').style.display = 'none';
+  }
+ 
+  });
+});
+
+function demo() {
+  var x = document.getElementById("myDIV-demo");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+
+  var other_x = document.getElementById("myDIV");
+  other_x.style.display = "none";
+}
+
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  var other_x = document.getElementById("myDIV-demo");
+  other_x.style.display = "none";
+}
+
+</script>
+
+	</head>
+	<body>
+		<!-- start preloader -->
+		<div class="preloader">
+			<div class="sk-spinner sk-spinner-rotating-plane"></div>
+    	 </div>
+		<!-- end preloader -->
+		<!-- start navigation -->
+		<nav class="navbar navbar-default navbar-fixed-top templatemo-nav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand">Deep Insights - ECG Analyzer</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right text-uppercase">
+						<li><a href="#home">Home</a></li>
+						<li><a href="#analyze-samples">Analyze-Now</a></li>
+						<li><a href="#data-info">Data</a></li>
+						<li><a href="#download">Features</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- end navigation -->
+		<!-- start home -->
+		<section id="home">
+			<div class="overlay">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1"></div>
+						<div class="col-md-10 wow fadeIn" data-wow-delay="0.3s">
+							<h1 class="text-upper">AI Based Cardiac Health Check</h1>
+							<p class="tm-white">ECG-Analyzer is a AI based app to classify digitized ECG readings to AAMI standards and also to identify if readings fall under the category of Myocardial Infraction. </p>
+							<img src="/static/images/digital-heart-beat.jpg" class="img-responsive" alt="home img">
+							
+							<div class="w3-container">
+									<a href="#analyze-samples"  class="w3-button w3-blue" style="text-decoration:none;font-weight:bold">TEST-NOW</a>
+							</div>
+
+							
+						</div>
+						
+						<div class="col-md-1"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end home -->
+		<!-- start divider -->
+		<section id="divider">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+						
+						<i class="fa fa-users" ></i>
+						<h3 class="text-uppercase">Analyze Realtime/Batch Readings</h3>
+						<p>Can handle single or multiple user data. Large number of user readings can be provided as a single input file. Results can be viewed in a tabular form for each user id.</p>
+					</div>
+					<div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+						
+						<i class="fa fa-plug" ></i>
+						<h3 class="text-uppercase">Easy API Access</h3>
+						<p>REST API for inference can be used, making integration with the digitizing app much easier. Helps to create a smooth integration between the ECG hardware to machine learning apps on the cloud or on premise </p>
+					</div>
+					<div class="col-md-4 wow fadeInUp templatemo-box" data-wow-delay="0.3s">
+							<i class="fa fa-cogs"></i>
+						<h3 class="text-uppercase">High Accuracy</h3>
+						<p>Models trained on two different ECG datasets, with Myocardial Infraction detector using learnt representations via transfer learning. </p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end divider -->
+
+		<!-- start analyze-samples -->
+		<section id="analyze-samples">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 wow fadeInLeft" data-wow-delay="0.6s">
+						<h2 class="text-uppercase">Analyze ECG Samples</h2>
+						<p>Use the Analyze-Now button to test the ECG sample you have.The input must be either csv,xls or xlsx extension, can contain one or multiple readings.<br>
+							<br>
+							 To take a look at a demo, use the DEMO button to view the data and the outputs.</p>
+						
+						<button onclick="myFunction()">Analyze-Now</button>
+
+								  <div id="myDIV" style="display:none">
+									<div class = "UploadData">
+										<form action = "http://ec2-54-236-241-225.compute-1.amazonaws.com:{{port|safe}}/uploader" method = "POST"
+											 enctype = "multipart/form-data">
+											 <!--h2 class="file-upload-heading">Upload the training data</h2-->
+											 <br>
+											<input type = "file" name = "file" />
+											<p>Plot This Sample <input class ="plot_sample"  value="1" type = "number" name = "plot_sample"></p>
+											<br>
+											 <input type = "submit"/>
+											<!--button type='submit'/-->
+										  </form>
+									</div>
+								  </div>
+								  <br><br><br>
+								<button onclick="demo()">DEMO</button>
+								  <div id="myDIV-demo" style="display:none">
+									<div class = "UploadData">
+										<form action = "http://ec2-54-236-241-225.compute-1.amazonaws.com:{{port|safe}}/uploader" method = "POST"
+											 enctype = "multipart/form-data">
+											 <!--h2 class="file-upload-heading">Upload the training data</h2-->
+											 <br>
+											 <p>Test this demo data</p>
+											 <p>Demo Data <input type="text" name="samplevalue" value="1.0, 0.6594594717025756, 0.18648648262023923, 0.07027027010917664, 0.07027027010917664, 0.05945945903658866, 0.05675675719976425, 0.04324324429035187, 0.05405405536293984, 0.045945946127176285, 0.05675675719976425, 0.04324324429035187, 0.0675675645470619, 0.0621621608734131, 0.07837837934494017, 0.07297297567129134, 0.08648648858070374, 0.08108107745647432, 0.10810811072587967, 0.11081080883741377, 0.1351351290941238, 0.1351351290941238, 0.17027026414871216, 0.18378378450870514, 0.21621622145175934, 0.2378378361463547, 0.2702702581882476, 0.2864864766597748, 0.31621623039245605, 0.3189189136028289, 0.3324324190616608, 0.29729729890823364, 0.26756757497787476, 0.21621622145175934, 0.18918919563293454, 0.13243243098258972, 0.1189189180731773, 0.06486486643552779, 0.06486486643552779, 0.04324324429035187, 0.05405405536293984, 0.037837836891412735, 0.04324324429035187, 0.021621622145175934, 0.045945946127176285, 0.03513513505458832, 0.05675675719976425, 0.03513513505458832, 0.037837836891412735, 0.032432433217763894, 0.04324324429035187, 0.037837836891412735, 0.05135134980082512, 0.02972972951829433, 0.04864864796400071, 0.02972972951829433, 0.05675675719976425, 0.05135134980082512, 0.07837837934494017, 0.06486486643552779, 0.09459459781646727, 0.09729729592800142, 0.11621621251106262, 0.09459459781646727, 0.09189189225435257, 0.06486486643552779, 0.0675675645470619, 0.04054053872823716, 0.04864864796400071, 0.018918918445706367, 0.021621622145175934, 0.008108108304440973, 0.02972972951829433, 0.010810811072587969, 0.021621622145175934, 0.005405405536293984, 0.032432433217763894, 0.018918918445706367, 0.021621622145175934, 0.04054053872823716, 0.24054053425788885, 0.5891891717910767, 0.9648648500442504, 0.5837838053703308, 0.12162162363529203, 0.0, 0.03513513505458832, 0.03513513505458832, 0.02702702768146992, 0.021621622145175934, 0.02972972951829433, 0.010810811072587969, 0.032432433217763894, 0.021621622145175934, 0.05135134980082512, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0"><br></p>
+											
+											<br>
+											 <input type = "submit"/>
+											<!--button type='submit'/-->
+										  </form>
+									</div>
+								  </div>
+
+					</div>
+						<div class="col-md-6 wow fadeInRight" style="margin-top:70px;" data-wow-delay="0.6s">
+							<img src="/static/images/EKG-Heart3.png" class="img-responsive" alt="feature img">
+						</div>
+				</div>
+			</div>	
+		</section>
+		<!-- end analyze-samples -->
+
+		
+
+		<!-- start data-info -->
+		<section id="data-info" style="margin-top:50px;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 wow bounceIn">
+						<h2 class="text-uppercase">DATA</h2>
+						<p>Renowned and robust ECG datasets have been used to create the model.</p>
+						
+						<p><i class="fa fa-database"></i><strong> PhysioNet MIT-BIH Arrhythmia: </strong>Consists of ECG recordings from 47 different subjects recorded at the sampling rate of 360Hz.
+							Each beat is annotated by at least two cardiologists.The beat classifications are in accordance with Association for the Advancement
+							of Medical Instrumentation (AAMI) EC57 standard.</p>
+						<p><i class="fa fa-database"></i><strong> PTB Diagnostic: </strong>This dataset consists of ECG records from
+							290 subjects: 148 diagnosed as MI , 52 healthy control, and	the rest are diagnosed with 7 different disease. Each record contains ECG signals from 12 leads sampled at the frequency
+							of 1000Hz. The model uses only ECG lead II.</p>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<!-- end data-info -->
+
+		<!-- start download -->
+		<section id="download">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 wow fadeInLeft" data-wow-delay="0.6s">
+						<h2 class="text-uppercase">App Features</h2>
+						<h3 class="text-uppercase">Heartbeat Classification</h3>
+						<p>To classify given ECG readings as one of the five different beat categories
+								in accordance with Association for the Advancement
+								of Medical Instrumentation (AAMI) EC57 standard. </p>
+						
+					</div>
+					<div class="col-md-7 wow fadeInRight" data-wow-delay="0.6s">
+						<img src="/static/images/ECG_Class_annotation.png" class="img-responsive" alt="feature img">
+					</div>
+				</div>
+				<div class="row-feature2">
+						<div class="col-md-5 wow fadeInLeft" data-wow-delay="0.6s">
+					<h3 class="text-uppercase">Myocardial Infraction - Classifier</h3>
+						<p>To classify if the ECG sample shows pattern similar to an incident of Myocardial Infraction. 
+							The model uses a combination of information available in the two datasets.
+						</p>
+						</div>
+						<div class="col-md-7 wow fadeInRight" data-wow-delay="0.6s">
+					
+				</div>
+			</div>
+		</section>
+		<!-- end download -->
+
+		<!-- start contact -->
+		<section id="contact">
+			<div class="overlay">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+							<h2 class="text-uppercase">Contact Us</h2>
+							<p>Reachout for a more detailed look, api integration or for any queries on the product. </p>
+							<address>
+								<p><i class="fa fa-map-marker"></i>Bangalore,India</p>
+								<p><i class="fa fa-phone"></i> 080-010-0110 </p>
+								<p><i class="fa fa-envelope-o"></i> info-ecganalyzer@deepinsights.com</p>
+							</address>
+						</div>
+						<div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+							<div class="contact-form">
+								<form action="#" method="post">
+									<div class="col-md-6">
+										<input type="text" class="form-control" placeholder="Name">
+									</div>
+									<div class="col-md-6">
+										<input type="email" class="form-control" placeholder="Email">
+									</div>
+									<div class="col-md-12">
+										<input type="text" class="form-control" placeholder="Subject">
+									</div>
+									<div class="col-md-12">
+										<textarea class="form-control" placeholder="Message" rows="4"></textarea>
+									</div>
+									<div class="col-md-8">
+										<input type="submit" class="form-control text-uppercase" value="Send">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end contact -->
+
+		<!-- start footer -->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<p>Copyright © 2084 Deep Insights</p>
+				</div>
+			</div>
+		</footer>
+		<!-- end footer -->
+        
+		<script src="/static/js/jquery.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/wow.min.js"></script>
+		<script src="/static/js/jquery.singlePageNav.min.js"></script>
+		<script src="/static/js/custom.js"></script>
+	</body>
+</html>
