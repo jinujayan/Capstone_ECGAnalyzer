@@ -9,6 +9,7 @@ import plotly
 import plotly.figure_factory as ff
 import plotly.offline as py
 import plotly.graph_objs as go
+import configparser
 #import cufflinks as cf
 #cf.go_offline()
 import keras
@@ -28,38 +29,43 @@ app = Flask(__name__,static_url_path='/static')
 app.secret_key = os.urandom(24)
 
 ALLOWED_EXTENSIONS = set(['csv', 'xlsx','xls'])
+#print(os.getcwd())
+def get_default_config():
+    conf = configparser.ConfigParser()
+    conf.read('conf/config.ini')
+    config = conf['DEFAULT']
+    return config
 
-my_parser = argparse.ArgumentParser(description='Arguments for the main program')
-my_parser.add_argument("host", type=str,help='hostname')
-my_parser.add_argument("port",type=int,help='port number')
-args = my_parser.parse_args()
-print(args.host)
-print(args.port)
-#app.run(host=args.host, port=args.port)
+
+conf = get_default_config()
+deploy_type = conf['deploy_type']
+print(deploy_type)
+
+hostname = conf['hostname']
+port = conf['port']
+
 
 @app.route('/')
 def upload_form():
 	"""
-    Method implementing the home url, it call the index.html to render a home page view
+    Method implementing the home url, it calls the index.html to render a home page view
 
     @param 
         
     @return: Rendered html view
 	"""
 	
-	return render_template('index.html',host="localhost", port=args.port)
+	return render_template('index.html',hostname=hostname, port=port)
 
 def allowed_file(filename):
 	"""
-    Receives input from the home page, the input can either be a file with list of
-	 ecg readings for anlysis, or a demo data string.
-	 Display the plotted graph, the predicted classes in tabular form.
+    Check if the input file is with the correct extension.
 
 
     @param file - Input analysis file / demo string
-    @param If file, index of the row t obe plotted
     
-    @return: Rendered html page
+    
+    @return: Boolean after checking the file extension
 	"""
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -86,13 +92,9 @@ def uploader():
 			print(out_df.shape)
 			colorscale = [[0, '#4d004c'],[.5, '#f2e5ff'],[1, '#ffffff']]
 			table = ff.create_table(out_df, colorscale=colorscale, height_constant = 20)
-			print(table)
-			print("***********")
-			#table.to_html()
-			print("DBG1")
+			
+			table.to_html()
 			pp_table = table.to_html()
-			print("DBG2")
-			print(table)
 			
 			return render_template('response.html', table = pp_table, graphplot = graphJSON)
 
@@ -229,6 +231,6 @@ def createECGGraph(df, plot_index, ecg_class, mi_class):
 	return graphs
 
 
+
 if __name__ == "__main__":
-	#host, port = handleArgParser()
-	app.run(host=args.host, port=args.port,threaded=False)
+    app.run(host='0.0.0.0', port=port,threaded=False)
