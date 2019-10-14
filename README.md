@@ -2,16 +2,16 @@
 To classify ECG readings to the correct beat class and to identify if it is a case of Myocardial Infraction
 
 ## Table of contents
-1. [Project Overview](Overview)
-2. [Problem Statement](Problem-Statement)
+1. [Project Overview](#project-overview)
+2. [Problem Statement](#problem-statement)
 3. [Installation](#installation)
-4. [Model Build](Model-Build)<br>
+4. [Model Build](model-build)<br>
    4.1 [Input](Input-Model-Build)<br>
    4.2 [Output](Output-Model-Build)<br>
 5. [Launch Web App](Launch-Web-App)
 6. [Results](#results)
 
-## Overview
+## Project Overview
 To create an application which can take one or multiple ECG readings and to give a classification of the heartbeat type along with a test for Myocardial Infraction scenario.
 
 ## Problem Statement
