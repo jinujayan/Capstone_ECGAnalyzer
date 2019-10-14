@@ -8,7 +8,7 @@ To classify ECG readings to the correct beat class and to identify if it is a ca
 4. [Model Build](#model-build)<br>
    4.1 [Input](#input-model-build)<br>
    4.2 [Output](#output-model-build)<br>
-5. [Launch Web App](#launch web app)
+5. [Launch Web App](#launch-web-app)
 6. [Results](#results)
 
 ## Project Overview
@@ -28,7 +28,8 @@ With Python 3.6 installed, ensure the packages in the requirements.txt are avail
 Run all the cells of the notebook ECG_Classifier_Models.ipynb, if all the cells are successfully executed two models will be saved to disk in the models folder.
 
 ## Input Model Build
-To build the model we need to provide two datasets.
+To build the model we need to provide two datasets. The details of the two datasets are provided below.
+Source for these datasets is [here](https://www.kaggle.com/shayanfazeli/heartbeat)
 
 __Arrhythmia Dataset:__<br>
 Number of Samples: 109446<br>
@@ -37,7 +38,7 @@ Sampling Frequency: 125Hz<br>
 Data Source: Physionet's MIT-BIH Arrhythmia Dataset<br>
 Classes: ['N': 0, 'S': 1, 'V': 2, 'F': 3, 'Q': 4]<br>
 Path: data\arrhythmia_dataset<br>
-Files: mitbih_test.scv, mitbih_train.csv<br>
+Files: mitbih_test.csv, mitbih_train.csv<br>
 
 __PTB Diagnostic ECG Database:__<br>
 Number of Samples: 14552<br>
@@ -45,7 +46,7 @@ Number of Categories: 2<br>
 Sampling Frequency: 125Hz<br>
 Data Source: Physionet's PTB Diagnostic Database<br>
 Path: data\ptb_dataset<br>
-Files: ptbdb_abnormal.scv, ptbdb_normal.csv<br>
+Files: ptbdb_abnormal.csv, ptbdb_normal.csv<br>
 
 
 ## Output Model Build
