@@ -5,10 +5,10 @@ To classify ECG readings to the correct beat class and to identify if it is a ca
 1. [Project Overview](#project-overview)
 2. [Problem Statement](#problem-statement)
 3. [Installation](#installation)
-4. [Model Build](model-build)<br>
-   4.1 [Input](Input-Model-Build)<br>
-   4.2 [Output](Output-Model-Build)<br>
-5. [Launch Web App](Launch-Web-App)
+4. [Model Build](#model-build)<br>
+   4.1 [Input](#input-model-build)<br>
+   4.2 [Output](#output-model-build)<br>
+5. [Launch Web App](#launch web app)
 6. [Results](#results)
 
 ## Project Overview
