@@ -72,8 +72,12 @@ For aws go to http://<public IP>:<port>/
 __Home Page__
 <br>
 
-![](https://github.com/jinujayan/DisasterResponse_ML_Pipeline/blob/master/images/HomePage_top.png)
+![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/webapp_home.png)
 
-__Category class distribution__
+__Data Loading__
 <br>
-![](https://github.com/jinujayan/DisasterResponse_ML_Pipeline/blob/master/images/Barplot_group.png)
+![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/upload_data.png)
+
+__Analysis Report__
+<br>
+![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/results.png)
