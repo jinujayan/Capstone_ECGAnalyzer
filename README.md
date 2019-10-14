@@ -57,14 +57,14 @@ model_MI_final.h5
 ## Launch Web App
 1. The can be run either on local machine or on aws instance. Configure the config.ini file present under the conf folder.
 For AWS:
-  deploy_type = aws
-  hostname = <publicly accessible name of the instance>
-  port = <availabl port>
+  deploy_type = aws<br>
+  hostname = 'publicly accessible name of the instance'<br>
+  port = 'available port'
   
 2. Run the following command in the app's directory to run your web app.
     `python app.py`
 
-3. For local execution go to http://localhost:<port>/
+3. For local execution go to http://localhost:<port>/<br>
 For aws go to http://<public IP>:<port>/
 
 ## Results
