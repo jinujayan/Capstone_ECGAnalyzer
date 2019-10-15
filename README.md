@@ -1,5 +1,5 @@
 # ECG Analyzer
-To classify ECG readings to the correct beat class and to identify if it is a case of Myocardial Infraction
+To classify ECG readings to the correct heartbeat class and to identify if it is a case of Myocardial Infraction.
 
 ## Table of contents
 1. [Project Overview](#project-overview)
@@ -12,6 +12,7 @@ To classify ECG readings to the correct beat class and to identify if it is a ca
 6. [Results](#results)
 7. [Future Scope](#future-scope)
 8. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
+
 ## Project Overview
 To create an application which can take one or multiple ECG readings and to give a classification of the heartbeat type along with a test for Myocardial Infraction scenario.
 
