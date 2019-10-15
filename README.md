@@ -71,8 +71,8 @@ model_MI_final.h5
 2. Run the following command in the app's directory to run your web app.
     `python app.py`
 
-3. For local execution go to http://localhost:<port>/<br>
-   For aws go to http://<IPv4 Public IP>:<port>/
+3. For local execution go to http://localhost:port/<br>
+   For aws go to http://IPv4 Public IP:port/
    Ex:http://54.236.63.231:8891
 
 ## Results
