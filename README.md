@@ -23,9 +23,11 @@ This app provides a easily usable api which can classify heartbeats as per the c
 
 ## Installation
 With Python 3.6 installed, ensure the packages in the requirements.txt are available.<br>
+If model should be rebuilt, data can be downloaded using kaggle api.Kaggle python package needs to be installed, refer notebook for more.
 
 ## Model Build
 Run all the cells of the notebook ECG_Classifier_Models.ipynb, if all the cells are successfully executed two models will be saved to disk in the models folder.
+If the model should be rebuilt, the data has to be downloaded from kaggle. Refere the notebook for instructions to download and build models.
 
 ## Input Model Build
 To build the model we need to provide two datasets. The details of the two datasets are provided below.
@@ -55,17 +57,23 @@ model_ECG_final.h5
 model_MI_final.h5
 
 ## Launch Web App
-1. The can be run either on local machine or on aws instance. Configure the config.ini file present under the conf folder.
-For AWS:
+1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
+  __For AWS:__
   deploy_type = aws<br>
-  hostname = 'publicly accessible name of the instance'<br>
+  hostname = 'Public DNS (IPv4) - available under instance details (ex: ec2-54-236-63-231.compute-1.amazonaws.com)'<br>
+  port = 'available port'
+  
+  __For Localmachine:__
+  deploy_type = local<br>
+  hostname = 'localhost'<br>
   port = 'available port'
   
 2. Run the following command in the app's directory to run your web app.
     `python app.py`
 
 3. For local execution go to http://localhost:<port>/<br>
-For aws go to http://<public IP>:<port>/
+   For aws go to http://<IPv4 Public IP>:<port>/
+   Ex:http://54.236.63.231:8891
 
 ## Results
 
