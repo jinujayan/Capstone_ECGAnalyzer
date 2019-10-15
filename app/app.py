@@ -32,7 +32,7 @@ ALLOWED_EXTENSIONS = set(['csv', 'xlsx','xls'])
 #print(os.getcwd())
 def get_default_config():
     conf = configparser.ConfigParser()
-    conf.read('conf/config.ini')
+    conf.read('../conf/config.ini')
     config = conf['DEFAULT']
     return config
 
@@ -54,7 +54,6 @@ def upload_form():
         
     @return: Rendered html view
 	"""
-	
 	return render_template('index.html',hostname=hostname, port=port)
 
 def allowed_file(filename):
@@ -88,8 +87,8 @@ def uploader():
 			demo_data = [ float(val) for val in demo_data]
 			
 			out_df, graphJSON = predictionHandler(demo_data = demo_data)
-			print("Show the shape of output DF")
-			print(out_df.shape)
+			#print("Show the shape of output DF")
+			#print(out_df.shape)
 			colorscale = [[0, '#4d004c'],[.5, '#f2e5ff'],[1, '#ffffff']]
 			table = ff.create_table(out_df, colorscale=colorscale, height_constant = 20)
 			
