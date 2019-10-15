@@ -10,7 +10,7 @@ To classify ECG readings to the correct beat class and to identify if it is a ca
    4.2 [Output](#output-model-build)<br>
 5. [Launch Web App](#launch-web-app)
 6. [Results](#results)
-
+7. [Future Scope](#future-scope)
 ## Project Overview
 To create an application which can take one or multiple ECG readings and to give a classification of the heartbeat type along with a test for Myocardial Infraction scenario.
 
@@ -73,7 +73,7 @@ model_MI_final.h5
 
 3. For local execution go to http://localhost:port/<br>
    For aws go to http://'IPv4 Public IP':port/ <br>
-   Ex:http://54.236.63.231:8891
+   Ex: http://54.236.63.231:8891
 
 ## Results
 
@@ -89,3 +89,5 @@ __Data Loading__
 __Analysis Report__
 <br>
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/results.png)
+
+## Future Scope
