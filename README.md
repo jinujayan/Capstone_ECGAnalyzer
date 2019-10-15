@@ -40,16 +40,14 @@ Number of Categories: 5<br>
 Sampling Frequency: 125Hz<br>
 Data Source: Physionet's MIT-BIH Arrhythmia Dataset<br>
 Classes: ['N': 0, 'S': 1, 'V': 2, 'F': 3, 'Q': 4]<br>
-Path: data\arrhythmia_dataset<br>
-Files: mitbih_test.csv, mitbih_train.csv<br>
+Files: data\mitbih_test.csv, data\mitbih_train.csv<br>
 
 __PTB Diagnostic ECG Database:__<br>
 Number of Samples: 14552<br>
 Number of Categories: 2<br>
 Sampling Frequency: 125Hz<br>
 Data Source: Physionet's PTB Diagnostic Database<br>
-Path: data\ptb_dataset<br>
-Files: ptbdb_abnormal.csv, ptbdb_normal.csv<br>
+Files: data\ptbdb_abnormal.csv, data\ptbdb_normal.csv<br>
 
 
 ## Output Model Build
