@@ -11,6 +11,7 @@ To classify ECG readings to the correct beat class and to identify if it is a ca
 5. [Launch Web App](#launch-web-app)
 6. [Results](#results)
 7. [Future Scope](#future-scope)
+8. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
 ## Project Overview
 To create an application which can take one or multiple ECG readings and to give a classification of the heartbeat type along with a test for Myocardial Infraction scenario.
 
@@ -95,3 +96,12 @@ __Analysis Report__
 ## Future Scope
 This project makes use of the processed and annotated dataset. To make it a fully useful app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
 More understanding of the hardware and availability of such datsets need to be investigated.
+
+## Licensing and Acknowledgements
+Licensing on the data set is same as applicable in the source page [here](https://www.kaggle.com/shayanfazeli/heartbeat).
+The analysis notebook code, the web app are available for open use, feel free to use it like you see fit.
+
+Some of the resources used in building the app are:<br>
+[Ideas in this paper](https://arxiv.org/abs/1805.00794)<br>
+[Discussion-1](https://www.sciencedirect.com/science/article/pii/S0169260715003314)<br>
+[Image1](https://www.idigitalhealth.com/news/e-tattoo-ecg-scg-readings-app)<br>
