@@ -72,7 +72,7 @@ model_MI_final.h5
     `python app.py`
 
 3. For local execution go to http://localhost:port/<br>
-   For aws go to http://IPv4 Public IP:port/
+   For aws go to http://'IPv4 Public IP':port/ <br>
    Ex:http://54.236.63.231:8891
 
 ## Results
