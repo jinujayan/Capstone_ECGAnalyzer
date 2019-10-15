@@ -84,10 +84,14 @@ __Home Page__
 
 __Data Loading__
 <br>
+
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/upload_data.png)
 
 __Analysis Report__
 <br>
+
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/results.png)
 
 ## Future Scope
+This project makes use of the processed and annotated dataset. To make it a fully useful app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
+More understanding of the hardware and availability of such datsets need to be investigated.
