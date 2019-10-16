@@ -49,6 +49,14 @@ Sampling Frequency: 125Hz<br>
 Data Source: Physionet's MIT-BIH Arrhythmia Dataset<br>
 Classes: ['N': 0, 'S': 1, 'V': 2, 'F': 3, 'Q': 4]<br>
 Files: data\mitbih_test.csv, data\mitbih_train.csv<br>
+### Class Distribution
+|Class_Name  | Count  |
+| -----------| -------|
+| N          | 90587  |
+| S          | 2779   |
+| V          | 7236   |
+| F          | 803    |
+| Q          | 8039   |
 
 __PTB Diagnostic ECG Database:__<br>
 Number of Samples: 14552<br>
@@ -56,10 +64,18 @@ Number of Categories: 2<br>
 Sampling Frequency: 125Hz<br>
 Data Source: Physionet's PTB Diagnostic Database<br>
 Files: data\ptbdb_abnormal.csv, data\ptbdb_normal.csv<br>
+### Class Distribution
+|Class_Name  | Count  |
+| -----------| -------|
+| Normal     | 4045   |
+| Abnormal   | 10505  |
+
+Input filess contains digitized ECG readings with 187 data points for each reading and also a annotated column describing the type of the reading.<br>
+__Snapshot :__
 
 
 ## Output Model Build
-The newly build models will be saved under the models directory
+The newly built models will be saved under the models directory
 model_ECG_final.h5
 model_MI_final.h5
 
