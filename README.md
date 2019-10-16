@@ -78,12 +78,13 @@ Files: data\ptbdb_abnormal.csv, data\ptbdb_normal.csv<br>
 | Abnormal   | 10505  |
 
 Input filess contains digitized ECG readings with 187 data points for each reading and also a annotated column describing the type of the reading.<br>
-__Snapshot :__
 
+__Data Snapshot :__
+![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/data_snap.png)
 
 ### Output Model Build
 The newly built models will be saved under the models directory
-model_ECG_final.h5
+model_ECG_final.h5, 
 model_MI_final.h5
 
 ### Metrics
@@ -95,12 +96,12 @@ model_MI_final.h5
 
 As the domain of application being health and involves conditions of critical cardiac care the objective is to have very high certainity in the model while identifying the positive cases (Myocardial Infraction - Abnormal).<br>
 The model must maximize identification of cases where the patient has the MI condition.<br>
-Also since there is an imbalances of classes i nthe dataset, accuracy will not be a true indictor of performance.
-To achieve this the metric of choice is __Recall__ which gives us an insight on out of all the people with the condition how many of them were correctly predicted.
+Also since there is an imbalances of classes i nthe dataset, accuracy will not be a true indicator of performance.
+To achieve this the metric of choice is __Recall__ which gives us an insight on the question : Out of all the people with the condition how many of them were correctly predicted?
 
 __Recall = TP/(TP+FN)__
 
-Since Recall is a global metric and will be misleading when evaluated within batches, the overall model performance is evaluated on predictions with the test set for different models using varying learning rates.
+Since Recall is a global metric and will be misleading when evaluated within batches, the overall model performance is evaluated on predictions with the test set for different models.
 
 ## Implementation
 
@@ -123,7 +124,8 @@ __Default model params:__
 Two classifiers are built using the above architecture, ECG_CLassifier and MI_Classifier.Since the domain of data and teh formats were the same, the learned weights of classifier 1 were made use of in the second model. This gaves a marked improvement in the model performance.An increase in recall score to .956 from 0.93
 
 ### Learning Trends
-The trends in some of the learning metrics for the default model is as shown below.
+The trends in default model's training accuracy and error is as shown below.<br>
+![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/pre_tuning.png)
 
 ## Refinement
 Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise.Some of the parameters tuned were learning_rate, batch_size.The results are as shown in the table.
@@ -140,6 +142,8 @@ __Hyperparameter tuning results__
 |0.002        | 300        |       0.953 |
 |0.01         | 250        |       0.935 |
 
+__Trining best model :__
+![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/Final_model.png)
 
 ## Launch Web App
 1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
@@ -182,16 +186,16 @@ The end to end application development can be analyzed as two separate tasks<br>
 1. Process data and build a neural network model<br>
 2. Build a friendly UI around the model to serve users.
 
-During model building, the power of learned representations in model building was noticed. When the MI classifier model was trained with random initializations the recall score noticed was 0.93
-When the weights were initialized with trained weights from classifier 1 there was an improvement in the score of classifier 2.
+During model building, the power of learned representations in model building was noticed. When the MI classifier model was trained with random initializations the recall score noticed was 0.9325
+When the weights were initialized with trained weights from classifier 1 there was an improvement in the score of classifier 2 to  0.9405 with all other parameters held constant.
 
-Since the metrics on the test set are high, the scope for further improvements are limited.
+Attempt was made to execute hyperparameter tunings in auto mode, but the sklearn grid search api could not directly be used in this scenario. For different combinations of parameters, tests were executed manually and results listed. As an improvement more faster ways of hyperparamter tuning should be investigated.
 
 There can be big improvments made on the web app to make it more user friendly. Latest interactive web development libraries can be explored.
 The perfromance of the web app needs more tuning to reduce the latency involved.
 
 ## Future Scope
-This project makes use of the processed and annotated dataset. To make it a fully useful app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
+This project makes use of the processed and annotated dataset. To make it a fully usefull app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
 More understanding of the hardware and availability of such datsets need to be investigated.
 
 ## Licensing and Acknowledgements
