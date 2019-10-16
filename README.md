@@ -9,16 +9,18 @@ To classify ECG readings to the correct heartbeat class and to identify if it is
 4. [Model Build](#model-build)<br>
    4.1 [Input](#input-model-build)<br>
    4.2 [Output](#output-model-build)<br>
-   4.3 [Metrics](#Metrics)<br>
+   4.3 [Metrics](#metrics)<br>
 5. [Implementation](#implementation)<br>
    5.1 [Data Reshape](#data-reshape)<br>
    5.2 [NN-Architecture](#nn-architecture)<br>
-   5.3 [Learning Trends](#learning-trends)<br>
+   5.3 [Transfer Learning](#transfer-learning)<br>
+   5.4 [Learning Trends](#learning-trends)<br>
 6. [Refinement](#refinement)
 7. [Launch Web App](#launch-web-app)
 8. [Results](#results)
-9. [Future Scope](#future-scope)
-10. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
+9. [Reflection](#reflection)
+10. [Future Scope](#future-scope)
+11. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
 
 ## Project Overview
 To create an application which can take one or multiple ECG readings and to give a classification of the heartbeat type along with a test for Myocardial Infraction scenario.
@@ -117,6 +119,9 @@ __Default model params:__
 |learning_rate| 0.001    |
 |batch_size   | 250      |
 
+### Transfer Learning
+Two classifiers are built using the above architecture, ECG_CLassifier and MI_Classifier.Since the domain of data and teh formats were the same, the learned weights of classifier 1 were made use of in the second model. This gave a amrked improvement in the model performance.An increase in recall score to .956 from 0.93
+
 ### Learning Trends
 The trends in some of the learning metrics for the default model is as shown below.
 
@@ -128,16 +133,16 @@ __Learning rates with constant batch_size:__
 |Learning_rate|Recall(max 1)|
 | ------------|-------------|
 |0.1          | 0.5         |
-|0.01         | 250         |
-|0.001        | 250         |
+|0.01         | 0.945       |
+|0.001        | 0.904       |
 
 __Batchsize with learning_rate = 0.01__
 
 |Batch_size|Recall(max 1)|
 | ---------|-------------|
-|250       | 0.5         |
-|500       | 250         |
-|750       | 250         |
+|250       | 0.917       |
+|500       | 0.945       |
+|750       | 0.5         |
 
 ## Launch Web App
 1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
@@ -174,6 +179,19 @@ __Analysis Report__
 <br>
 
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/results.png)
+
+## Reflection
+The end to end application development can be analyzed as separate tasks<br>
+1. Process data and build a neural network model<br>
+2. Build a friendly UI around the model to serve users.
+
+During model building, the power of using learned representaitons was noticed. When the MI classifier model was trained with random initializations the recall score noticed was ---
+
+When the weights were initialized with trained weights from classifier 1 there was an improvement in the score of classifier 2.
+Since the metrics on the test set are high, the scope for further improvements are limited.
+
+There can be big improvments made on the web app to make it more user friendly. 
+The perfromance of the web app needs more tuning to reduce the latency invovled.
 
 ## Future Scope
 This project makes use of the processed and annotated dataset. To make it a fully useful app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
