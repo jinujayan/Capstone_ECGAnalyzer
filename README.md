@@ -3,11 +3,13 @@ To classify ECG readings to the correct heartbeat class and to identify if it is
 
 ## Table of contents
 1. [Project Overview](#project-overview)
-2. [Problem Statement](#problem-statement)
+2. [Problem Statement](#problem-statement)<br>
+   2.1 [Solution Approach](#solution-approach)
 3. [Installation](#installation)
 4. [Model Build](#model-build)<br>
    4.1 [Input](#input-model-build)<br>
    4.2 [Output](#output-model-build)<br>
+   4.3 [Metrics](#Metrics)<br>
 5. [Launch Web App](#launch-web-app)
 6. [Results](#results)
 7. [Future Scope](#future-scope)
@@ -22,6 +24,11 @@ Also there are many places in rural India where such experienced medical persone
 This app provides a easily usable api which can classify heartbeats as per the class standards defined by the Association for the Advancement of Medical Instrumentation (AAMI).
 
 2. In cases of suspected acute Myocardial Infraction(MI), tests and diagnosis need to be made very quickly as time is of vital importance. The app makes full use of representations in two different datasets to arrive at a quick decision identifying a acute MI scenario with high accuracy.
+
+## Solution Approach
+As the two datasets being used are capturing same data but annotaed for different cardiac states(Heartbeat class vs myocardial Infraction class) the idea is to capture representations from one dataset/model and to make use of it in the second model.
+Since transfer learning in neural networks have been performing well and with tools available in all frameworks, this approach has been selected as the way to build a classifier model to detect Myocardial Infraction.
+Keras is the deepleraning framework selcted because of the ease of use. Since the data are already in digitized, processed format only formatting required is to convert data shapes as expected by the framework.
 
 ## Installation
 With Python 3.6 installed, ensure the packages in the requirements.txt are available.<br>
@@ -55,6 +62,21 @@ Files: data\ptbdb_abnormal.csv, data\ptbdb_normal.csv<br>
 The newly build models will be saved under the models directory
 model_ECG_final.h5
 model_MI_final.h5
+
+## Metrics
+### PTB Diagnostic - Class Distribution
+|Class 0(Normal)  | Class 1(AbNormal)  |
+| ----------------| -------------------|
+| 4045            | 10505              |
+
+As the domain of application being health and involves conditions of critical cardiac care the objective is to have very high certainity in the model while identifying the positive cases (Myocardial Infraction - Abnormal).<br>
+The model must maximize identification of cases where the patient has the MI condition.<br>
+Also since there is an imbalances of classes i nthe dataset, accuracy will not be a true indictor of performance.
+To achieve this the metric of choice is __Recall__ which gives us an insight on out of all the people with the condition how many of them were correctly predicted.
+
+__Recall = TP/(TP+FN)__
+
+Since Recall is a global metric and will be misleading when evaluated within batches, the overall model performance is evaluated on predictions with the test set for different models using varying learning rates.
 
 ## Launch Web App
 1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
