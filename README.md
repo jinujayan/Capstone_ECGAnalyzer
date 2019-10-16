@@ -19,7 +19,7 @@ To classify ECG readings to the correct heartbeat class and to identify if it is
 7. [Launch Web App](#launch-web-app)
 8. [Results](#results)
 9. [Reflection](#reflection)
-10. [Future Scope](#future-scope)
+10. [Improvements and Future Scope](#improvements-and-future-scope)
 11. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
 
 ## Project Overview
@@ -33,9 +33,9 @@ This app provides a easily usable api which can classify heartbeats as per the c
 2. In cases of suspected acute Myocardial Infraction(MI), tests and diagnosis need to be made very quickly as time is of vital importance. The app makes full use of representations in two different datasets to arrive at a quick decision identifying a acute MI scenario with high accuracy.
 
 ## Solution Approach
-As the two datasets being used are capturing same data but annotaed for different cardiac states(Heartbeat class vs myocardial Infraction class) the idea is to capture representations from one dataset/model and to make use of it in the second model.
+As the two datasets being used are capturing same data but annotated for different cardiac states(Heartbeat class vs Myocardial Infraction class) the idea is to capture representations from one dataset/model and to make use of it in the second model.
 Since transfer learning in neural networks have been performing well and with tools available in all frameworks, this approach has been selected as the way to build a classifier model to detect Myocardial Infraction.
-Keras is the deepleraning framework selcted because of the ease of use. Since the data are already in digitized, processed format only formatting required is to convert data shapes as expected by the framework.
+Keras is the deep learning framework selcted because of the ease of use. Since the data are already in digitized, processed format only formatting required is to convert data shapes as expected by the framework.
 
 ## Installation
 With Python 3.6 installed, ensure the packages in the requirements.txt are available.<br>
@@ -96,7 +96,7 @@ model_MI_final.h5
 
 As the domain of application being health and involves conditions of critical cardiac care the objective is to have very high certainity in the model while identifying the positive cases (Myocardial Infraction - Abnormal).<br>
 The model must maximize identification of cases where the patient has the MI condition.<br>
-Also since there is an imbalances of classes i nthe dataset, accuracy will not be a true indicator of performance.
+Also since there is an imbalances of classes in the dataset, accuracy will not be a true indicator of performance.
 To achieve this the metric of choice is __Recall__ which gives us an insight on the question : Out of all the people with the condition how many of them were correctly predicted?
 
 __Recall = TP/(TP+FN)__
@@ -106,29 +106,30 @@ Since Recall is a global metric and will be misleading when evaluated within bat
 ## Implementation
 
 ### Data Reshape
-Each records of the input file is a sequence of float values, 187 items in a row. To be used in Keras models the input to be reshaped to 
+Each record of the input file is a sequence of float values, 187 items in a row. To be used in Keras models the input to be reshaped to 
 (N,187,1)
 
 ### NN-Architecture
 To extract patterns from this one dimensional data sequence Convolution 1D layers are used. Two such layers with max pooling and a regularization drop out layer is used before compressing data to get an output of class count.
 To help with the training a callback is used to ensure a checkpoint is saved for each epoch and also early stopping is enabled by tracking the trends in validation loss.
+The amount of learning in each batch is quantized via loss calcualted as categorical_crossentropy.
 
 __Default model params:__
 
-|Parameter    |Value)    |
-| ------------| ---------|
-|learning_rate| 0.001    |
-|batch_size   | 250      |
+|Parameter    |Value  |
+| ------------|-------|
+|learning_rate| 0.001 |
+|batch_size   | 250   |
 
 ### Transfer Learning
-Two classifiers are built using the above architecture, ECG_CLassifier and MI_Classifier.Since the domain of data and teh formats were the same, the learned weights of classifier 1 were made use of in the second model. This gaves a marked improvement in the model performance.An increase in recall score to .956 from 0.93
+Two classifiers are built using the above architecture, ECG_CLassifier and MI_Classifier. Since the domain of data and the formats were the same, the learned weights of classifier 1 were made use of in the second model. This gaves a marked improvement in the model performance.
 
 ### Learning Trends
 The trends in default model's training accuracy and error is as shown below.<br>
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/pre_tuning.png)
 
 ## Refinement
-Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise.Some of the parameters tuned were learning_rate, batch_size.The results are as shown in the table.
+Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise. Some of the parameters tuned were learning_rate, batch_size.The results are as shown in the table.
 
 __Hyperparameter tuning results__
 
@@ -194,9 +195,10 @@ Attempt was made to execute hyperparameter tunings in auto mode, but the sklearn
 There can be big improvments made on the web app to make it more user friendly. Latest interactive web development libraries can be explored.
 The perfromance of the web app needs more tuning to reduce the latency involved.
 
-## Future Scope
+## Improvements and Future Scope
 This project makes use of the processed and annotated dataset. To make it a fully usefull app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
 More understanding of the hardware and availability of such datsets need to be investigated.
+Only heartbeat dataset has been used in the model, experiments can be done to investigate usage of other patient medical records to arrive at a more robust model.
 
 ## Licensing and Acknowledgements
 Licensing on the data set is same as applicable in the source page [here](https://www.kaggle.com/shayanfazeli/heartbeat).
