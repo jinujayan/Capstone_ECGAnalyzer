@@ -10,10 +10,15 @@ To classify ECG readings to the correct heartbeat class and to identify if it is
    4.1 [Input](#input-model-build)<br>
    4.2 [Output](#output-model-build)<br>
    4.3 [Metrics](#Metrics)<br>
-5. [Launch Web App](#launch-web-app)
-6. [Results](#results)
-7. [Future Scope](#future-scope)
-8. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
+5. [Implementation](#implementation)<br>
+   5.1 [Data Reshape](#data-reshape)<br>
+   5.2 [NN-Architecture](#nn-architecture)<br>
+   5.3 [Learning Trends](#learning-trends)<br>
+6. [Refinement](#refinement)
+7. [Launch Web App](#launch-web-app)
+8. [Results](#results)
+9. [Future Scope](#future-scope)
+10. [Licensing and Acknowledgements](#licensing-and-acknowledgements)
 
 ## Project Overview
 To create an application which can take one or multiple ECG readings and to give a classification of the heartbeat type along with a test for Myocardial Infraction scenario.
@@ -38,7 +43,7 @@ If model should be rebuilt, data can be downloaded using kaggle api.Kaggle pytho
 Run all the cells of the notebook ECG_Classifier_Models.ipynb, if all the cells are successfully executed two models will be saved to disk in the models folder.
 If the model should be rebuilt, the data has to be downloaded from kaggle. Refere the notebook for instructions to download and build models.
 
-## Input Model Build
+### Input Model Build
 To build the model we need to provide two datasets. The details of the two datasets are provided below.
 Source for these datasets is [here](https://www.kaggle.com/shayanfazeli/heartbeat)
 
@@ -49,7 +54,7 @@ Sampling Frequency: 125Hz<br>
 Data Source: Physionet's MIT-BIH Arrhythmia Dataset<br>
 Classes: ['N': 0, 'S': 1, 'V': 2, 'F': 3, 'Q': 4]<br>
 Files: data\mitbih_test.csv, data\mitbih_train.csv<br>
-### Class Distribution
+#### Class Distribution
 |Class_Name  | Count  |
 | -----------| -------|
 | N          | 90587  |
@@ -64,7 +69,7 @@ Number of Categories: 2<br>
 Sampling Frequency: 125Hz<br>
 Data Source: Physionet's PTB Diagnostic Database<br>
 Files: data\ptbdb_abnormal.csv, data\ptbdb_normal.csv<br>
-### Class Distribution
+#### Class Distribution
 |Class_Name  | Count  |
 | -----------| -------|
 | Normal     | 4045   |
@@ -74,13 +79,13 @@ Input filess contains digitized ECG readings with 187 data points for each readi
 __Snapshot :__
 
 
-## Output Model Build
+### Output Model Build
 The newly built models will be saved under the models directory
 model_ECG_final.h5
 model_MI_final.h5
 
-## Metrics
-### PTB Diagnostic - Class Distribution
+### Metrics
+#### PTB Diagnostic - Class Distribution
 |Class 0(Normal)  | Class 1(AbNormal)  |
 | ----------------| -------------------|
 | 4045            | 10505              |
@@ -93,6 +98,23 @@ To achieve this the metric of choice is __Recall__ which gives us an insight on 
 __Recall = TP/(TP+FN)__
 
 Since Recall is a global metric and will be misleading when evaluated within batches, the overall model performance is evaluated on predictions with the test set for different models using varying learning rates.
+
+## Implementation
+
+### Data Reshape
+Each records of the input file is a sequence of float values, 187 items in a row. To be used in Keras models the input to be reshaped to 
+(N,187,1)
+
+### NN-Architecture
+To extract patterns from this one dimensional data sequence Convolution 1D layers are used. Two such layers with max pooling and a regularization drop out layer is used before compressing data to get an output of class count.
+
+To help with the training a callback is used to ensure a checkpoint is saved for each epoch and also early stopping is enabled by tracking the trends in validation loss.
+
+### Learning Trends
+The trends in some of the learning metrics for the default model is as shown below.
+
+## Refinement
+Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise.Some of the parameters tuned were learning_rate, batch_size.
 
 ## Launch Web App
 1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
