@@ -143,7 +143,7 @@ __Hyperparameter tuning results__
 |0.002        | 300        |       0.953 |
 |0.01         | 250        |       0.935 |
 
-__Trining best model :__
+__Training best model :__
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/Final_model.png)
 
 ## Launch Web App
