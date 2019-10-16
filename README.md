@@ -120,7 +120,7 @@ __Default model params:__
 |batch_size   | 250      |
 
 ### Transfer Learning
-Two classifiers are built using the above architecture, ECG_CLassifier and MI_Classifier.Since the domain of data and teh formats were the same, the learned weights of classifier 1 were made use of in the second model. This gave a amrked improvement in the model performance.An increase in recall score to .956 from 0.93
+Two classifiers are built using the above architecture, ECG_CLassifier and MI_Classifier.Since the domain of data and teh formats were the same, the learned weights of classifier 1 were made use of in the second model. This gaves a marked improvement in the model performance.An increase in recall score to .956 from 0.93
 
 ### Learning Trends
 The trends in some of the learning metrics for the default model is as shown below.
@@ -128,21 +128,18 @@ The trends in some of the learning metrics for the default model is as shown bel
 ## Refinement
 Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise.Some of the parameters tuned were learning_rate, batch_size.The results are as shown in the table.
 
-__Learning rates with constant batch_size:__
+__Hyperparameter tuning results__
 
-|Learning_rate|Recall(max 1)|
-| ------------|-------------|
-|0.1          | 0.5         |
-|0.01         | 0.945       |
-|0.001        | 0.904       |
+|Learning_rate|Batch_size) |Recall(max 1)|
+| ------------|------------|-------------|
+|0.023        | 150        |       0.912 |
+|0.001        | 150        |       0.956 |
+|**0.002**    | **150**    |   **0.966** |
+|0.002        | 250        |       0.963 |
+|0.0015       | 300        |       0.946 |
+|0.002        | 300        |       0.953 |
+|0.01         | 250        |       0.935 |
 
-__Batchsize with learning_rate = 0.01__
-
-|Batch_size|Recall(max 1)|
-| ---------|-------------|
-|250       | 0.917       |
-|500       | 0.945       |
-|750       | 0.5         |
 
 ## Launch Web App
 1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
@@ -181,17 +178,17 @@ __Analysis Report__
 ![](https://github.com/jinujayan/Capstone_ECGAnalyzer/blob/master/images/results.png)
 
 ## Reflection
-The end to end application development can be analyzed as separate tasks<br>
+The end to end application development can be analyzed as two separate tasks<br>
 1. Process data and build a neural network model<br>
 2. Build a friendly UI around the model to serve users.
 
-During model building, the power of using learned representaitons was noticed. When the MI classifier model was trained with random initializations the recall score noticed was ---
-
+During model building, the power of learned representations in model building was noticed. When the MI classifier model was trained with random initializations the recall score noticed was 0.93
 When the weights were initialized with trained weights from classifier 1 there was an improvement in the score of classifier 2.
+
 Since the metrics on the test set are high, the scope for further improvements are limited.
 
-There can be big improvments made on the web app to make it more user friendly. 
-The perfromance of the web app needs more tuning to reduce the latency invovled.
+There can be big improvments made on the web app to make it more user friendly. Latest interactive web development libraries can be explored.
+The perfromance of the web app needs more tuning to reduce the latency involved.
 
 ## Future Scope
 This project makes use of the processed and annotated dataset. To make it a fully useful app we will need to interface directly with the ECG readers, this will need functionality to work directly with the raw data coming from the ECG machines.<br>
