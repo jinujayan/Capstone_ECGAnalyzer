@@ -85,6 +85,7 @@ model_ECG_final.h5
 model_MI_final.h5
 
 ### Metrics
+
 #### PTB Diagnostic - Class Distribution
 |Class 0(Normal)  | Class 1(AbNormal)  |
 | ----------------| -------------------|
@@ -107,14 +108,36 @@ Each records of the input file is a sequence of float values, 187 items in a row
 
 ### NN-Architecture
 To extract patterns from this one dimensional data sequence Convolution 1D layers are used. Two such layers with max pooling and a regularization drop out layer is used before compressing data to get an output of class count.
-
 To help with the training a callback is used to ensure a checkpoint is saved for each epoch and also early stopping is enabled by tracking the trends in validation loss.
+
+__Default model params:__
+
+|Parameter    |Value)    |
+| ------------| ---------|
+|learning_rate| 0.001    |
+|batch_size   | 250      |
 
 ### Learning Trends
 The trends in some of the learning metrics for the default model is as shown below.
 
 ## Refinement
-Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise.Some of the parameters tuned were learning_rate, batch_size.
+Once the model with default parameter values was producing a good enough result, the model was subjected to parameter tuning exercise.Some of the parameters tuned were learning_rate, batch_size.The results are as shown in the table.
+
+__Learning rates with constant batch_size:__
+
+|Learning_rate|Recall(max 1)|
+| ------------|-------------|
+|0.1          | 0.5         |
+|0.01         | 250         |
+|0.001        | 250         |
+
+__Batchsize with learning_rate = 0.01__
+
+|Batch_size|Recall(max 1)|
+| ---------|-------------|
+|250       | 0.5         |
+|500       | 250         |
+|750       | 250         |
 
 ## Launch Web App
 1. The app can be launched either on local machine or on aws instance. Configure the config.ini file present under the conf folder  accordingly.<br>
