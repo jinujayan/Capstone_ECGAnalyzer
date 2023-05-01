@@ -1,6 +1,6 @@
 pandas==0.25.1
 numpy==1.16.4
-flask==1.0.2
+flask==2.3.2
 plotly==3.10.0
 keras==2.2.5
 sklearn==0.21.2
